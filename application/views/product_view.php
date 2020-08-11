@@ -13,6 +13,7 @@
 		<div class="row">
 			<div class="col-md-8">
 				<?php foreach ($list_product as $key) { ?>
+				<div class="col-md-4">
 				<div class="thumbnail">
 					<img width="200" src="<?php echo base_url(); ?>upload/images/<?php echo $key['product_image'] ?>">
 					<div class="caption">
@@ -22,11 +23,12 @@
 								<h4>Giá sản phẩm: <?php echo number_format($key['product_price']); ?>$</h4>
 							</div>
 							<div class="col-md-5">
-								<input type="number" name="quantity" id="product_id" value="1" min = "1" class="quantity form-control">
+								<input type="number" name="quantity" id="<?php echo $key['product_id'] ?>" value="1" min = "1" class="quantity form-control">
 							</div>
 						</div>
 						<button class="add_cart btn btn-success btn-block" data-productid="<?php echo $key['product_id'] ?>" data-productname="<?php echo $key['product_name'] ?>" data-productprice="<?php echo $key['product_price'] ?>">Thêm vào giỏ hàng</button>
 					</div>
+				</div>
 				</div>
 			<?php } ?>
 			</div>
@@ -58,7 +60,7 @@
 			let product_id		= $(this).data("productid");
 			let product_name 	= $(this).data("productname");
 			let product_price	= $(this).data("productprice");
-			let quantity 		= $('#product_id').val();
+			let quantity 		= $('#' + product_id).val();
 
 			$.ajax({
 				url: '<?php echo base_url(); ?>product/add_to_cart',

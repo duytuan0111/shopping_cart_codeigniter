@@ -19,7 +19,7 @@ class Product extends CI_Controller
 	}
 	public function index() {
 		$this->_data['page_title'] 		= 'Shopping Cart php & Jquery';
-		$this->_data['head_title'] 		= 'Shoping Cart Demo';
+		$this->_data['head_title'] 		= 'Danh Sách Nước Hoa';
 		$this->_data['list_product']	= $this->Mproduct->get_all_product();
 		// var_dump($this->_data['list_product']);
 		$this->load->view('product_view.php', $this->_data); 
